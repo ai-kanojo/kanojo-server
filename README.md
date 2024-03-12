@@ -54,3 +54,7 @@ https://drive.google.com/file/d/1R3Vzh4eEmQHmWvj7zwp3-oei4H16bPAy/view?usp=shari
 
 assets/huber에 다음 파일을 받아 넣기
 https://drive.google.com/file/d/1QcphJVeXV0PucSoA4ogSo3Fa_RuQ91zE/view?usp=sharing
+
+## OpenAI API 설정
+
+환경변수 OPENAI_API_KEY에 발급된 API키를 설정해야 돌아갑니다.

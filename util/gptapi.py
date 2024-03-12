@@ -1,15 +1,16 @@
 from openai import OpenAI
+import os
 
 # client 세팅
 
-ASSISTANT_ID='asst_1KA99FjY4w2PB9N5vtQjp0SD'
+ASSISTANT_ID='asst_TnuTyENYP7YIFjXDaVYuvEg5'
 
 class GPTApi:
     """
     GPTApi를 통한 응답을 반환해줍니다.
     """
     def __init__(self, assistant_id=ASSISTANT_ID):
-        self.client = OpenAI() #apikey는 알아서
+        self.client = OpenAI(api_key=os.environ['OPENAI_API_KEY']) #apikey는 알아서
         self.assistant_id = assistant_id
         self.thread = self.client.beta.threads.create()
 
@@ -40,4 +41,5 @@ class GPTApi:
             thread_id = self.thread.id
         )
 
-        return messages
+        return messages.data[0].content[0].text.value
+    
