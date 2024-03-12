@@ -41,3 +41,16 @@ $ python3 main.py
 ```
 
 - http://localhost:5000 에서 api 서버가 실행됩니다.
+
+## TTS 환경설정
+
+google cloud api인증설정이 되어야함 다음링크 참고
+https://cloud.google.com/text-to-speech/docs/libraries?hl=ko
+
+## 목소리변조 환경설정
+
+assets/rmvpe에 다음 파일을 받아 넣기
+https://drive.google.com/file/d/1R3Vzh4eEmQHmWvj7zwp3-oei4H16bPAy/view?usp=sharing
+
+assets/huber에 다음 파일을 받아 넣기
+https://drive.google.com/file/d/1QcphJVeXV0PucSoA4ogSo3Fa_RuQ91zE/view?usp=sharing
