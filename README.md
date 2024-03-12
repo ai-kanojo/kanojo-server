@@ -1,7 +1,7 @@
 # kanojo-server
 ai-kanojo의 서버를 담당하는 레포지토리입니다.
 
-## venv 관련
+## 기본 환경 설정
 
 ```bash
 # 가상 환경 생성
@@ -28,3 +28,12 @@ $ pip3 install -r requirements.txt
 # pip를 통해 패키지를 설치한 후에는 반드시 requirement에 기록합니다.
 $ pip3 freeze > requirement.txt
 ```
+
+## flask 실행
+
+```bash
+# api 서버 실행
+$ python3 main.py
+```
+
+- http://localhost:5000 에서 api 서버가 실행됩니다.
