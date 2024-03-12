@@ -41,3 +41,7 @@ $ python3 main.py
 ```
 
 - http://localhost:5000 에서 api 서버가 실행됩니다.
+
+## OpenAI API 설정
+
+환경변수 OPENAI_API_KEY에 발급된 API키를 설정해야 돌아갑니다.
