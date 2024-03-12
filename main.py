@@ -2,8 +2,10 @@ import os
 
 from flask import Flask, jsonify, request
 from util.tts import text_to_speech
+from util.gptapi import GPTApi
 
 app = Flask(__name__)
+gpt = GPTApi()
 
 # mp4 파일이 업로드되는 경로 설정
 UPLOAD_FOLDER = 'uploads'
@@ -47,6 +49,18 @@ def upload_file():
 
         return jsonify({'message': f'File {filename} uploaded successfully'}), 200
 
+@app.route('/askai', methods=['POST'])
+def ask_ai():
+    data = request.json
+    text = data.get('text')
+
+    if not text:
+        return jsonify({'error': 'No text provided'}), 400
+
+    result = gpt.send(text)
+    print(result)
+
+    return jsonify({'result': result})
 
 if __name__ == '__main__':
     app.run()
