@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, send_file
 from util.tts import CharacterTTS
 from util.gptapi import GPTApi
+from util.stt import speech_to_text
 import os
 
 MODEL_PATH = "assets/weights/Szrv3.pth"
@@ -13,6 +14,7 @@ gpt = GPTApi()
 # mp4 파일이 업로드되는 경로 설정
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 @app.route('/')
 def hello_world():
@@ -45,12 +47,15 @@ def upload_file():
 
     # 파일이 있는 경우
     if file:
-        # 안전한 파일 이름을 생성 (secure_filename 사용 권장)
         filename = file.filename
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
 
-        return jsonify({'message': f'File {filename} uploaded successfully'}), 200
+        text = speech_to_text(file_path)
+
+        return jsonify({'message': f'File {filename} uploaded successfully',
+                        'text': text}), 200
+
 
 @app.route('/askai', methods=['POST'])
 def ask_ai():
@@ -64,6 +69,7 @@ def ask_ai():
     print(result)
 
     return jsonify({'result': result})
+
 
 if __name__ == '__main__':
     app.run()
