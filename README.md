@@ -19,7 +19,7 @@ $ source venv/bin/activate
 
 ```bash
 # requirement.txt에 적힌 패키지 설치
-$ pip3 install -r requirements.txt
+$ pip3 install -r requirement.txt
 ```
 
 ```bash
