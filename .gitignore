@@ -4,3 +4,7 @@
 # env
 .idea
 DS_Store
+
+#hubert and rmvpe
+assets/rmvpe/rmvpe.pt
+assets/hubert/hubert_base.pt

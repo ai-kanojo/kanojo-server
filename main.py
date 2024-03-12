@@ -1,10 +1,13 @@
+from flask import Flask, jsonify, request, send_file
+from util.tts import CharacterTTS
+from util.gptapi import GPTApi
 import os
 
-from flask import Flask, jsonify, request
-from util.tts import text_to_speech
-from util.gptapi import GPTApi
+MODEL_PATH = "assets/weights/Szrv3.pth"
+AUDIO_PATH = "assets/audio/output.wav"
 
 app = Flask(__name__)
+tts = CharacterTTS(MODEL_PATH)
 gpt = GPTApi()
 
 # mp4 파일이 업로드되는 경로 설정
@@ -24,9 +27,9 @@ def post_tts_request():
     if not text:
         return jsonify({'error': 'No text provided'}), 400
 
-    result = text_to_speech(text)
+    tts.text_to_speech_kr(text, AUDIO_PATH)
 
-    return jsonify({'result': result})
+    return send_file(AUDIO_PATH)
 
 
 @app.route('/upload', methods=['POST'])
