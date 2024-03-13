@@ -20,7 +20,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def hello_world():
     return 'Hello World!'
 
-
 @app.route('/tts', methods=['POST'])
 def post_tts_request():
     data = request.json
@@ -52,7 +51,6 @@ def upload_file():
         file.save(file_path)
 
         text = speech_to_text(file_path)
-
         return jsonify({'message': f'File {filename} uploaded successfully',
                         'text': text}), 200
 
@@ -70,6 +68,28 @@ def ask_ai():
 
     return jsonify({'result': result})
 
+@app.route('/pipeline', methods=['POST'])
+def pipeline():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
+
+    file = request.files['file']
+    
+    # 사용자가 파일을 선택하지 않고 form을 제출했을 경우
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+
+    # 파일이 있는 경우
+    if file:
+        filename = file.filename
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(file_path)
+        text = speech_to_text(file_path)
+        answer = gpt.send(text)
+        tts.text_to_speech_kr(answer, AUDIO_PATH)
+        
+        return send_file(AUDIO_PATH)
+    
 
 if __name__ == '__main__':
     app.run()
