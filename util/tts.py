@@ -75,7 +75,7 @@ class CharacterTTS:
         #google tts
         synthesis_input = texttospeech.SynthesisInput(text=txt)
         voice = texttospeech.VoiceSelectionParams(
-            language_code="jp-JP", name="jp-JP-Neural2-B", ssml_gender=texttospeech.SsmlVoiceGender.FEMALE
+            language_code="ja-JP", name="ja-JP-Neural2-B", ssml_gender=texttospeech.SsmlVoiceGender.FEMALE
         )
 
         audio_config = texttospeech.AudioConfig(
