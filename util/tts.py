@@ -44,7 +44,7 @@ class CharacterTTS:
         opt1,opt2 = self.vc.vc_single(
             sid=0,
             input_audio_path=audio_path,
-            f0_up_key=0,
+            f0_up_key=5,
             f0_file="",
             f0_method="rmvpe",
             file_index=index_path,
@@ -95,7 +95,7 @@ class CharacterTTS:
         opt1,opt2 = self.vc.vc_single(
             sid=0,
             input_audio_path=audio_path,
-            f0_up_key=0,
+            f0_up_key=5,
             f0_file="",
             f0_method="rmvpe",
             file_index=index_path,
