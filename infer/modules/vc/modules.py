@@ -95,7 +95,7 @@ class VC:
                 "",
                 "",
             )
-        person = f'D:/GitHub/kanojo-server/{sid}'
+        person = f'{sid}'
         logger.info(f"Loading: {person}")
 
         self.cpt = torch.load(person, map_location="cpu")
